@@ -1,74 +1,77 @@
-# Frontespizio Sapienza
+LaTeX package for thesis cover page in compliance with Sapienza guidelines, see [here](http://www.uniroma1.it/sites/default/files/allegati/esempio%20frontespizio%20elaborato.pdf) for an example and [here](http://www.uniroma1.it/logotesi) for complete guidelines. The package is provided *as-is*, with no warranty of any kind.
 
-Package LaTeX per frontespizio tesi conforme alle indicazioni della Sapienza, vedi [qui](http://www.uniroma1.it/sites/default/files/allegati/esempio%20frontespizio%20elaborato.pdf) per un esempio e [qui](http://www.uniroma1.it/logotesi) per le indicazioni complete.
-Il package &egrave; fornito *as-is*, senza alcuna garanzia di funzionamento.
+The logo (`.eps` file) was obtained by converting (with Inkscape) the `.ai` file available on the website of Sapienza (see [here](http://www.uniroma1.it/sites/default/files/allegati/ml_alta_risoluzione.zip)).
 
-Il logo (file `.eps`) &egrave; stato ottenuto convertendo (con Inkscape) il file `.ai` disponibile sul sito della Sapienza (vedi [qui](http://www.uniroma1.it/sites/default/files/allegati/ml_alta_risoluzione.zip)).
+## Instructions
 
-## Istruzioni
+The package modifies the `\maketitle` command to create a front page that complies with Sapienza's instructions.
 
-Il package modifica il comando `\maketitle` per creare una pagina di frontespizio conforme alle indicazioni Sapienza.
+The `test.tex` file provides an example of how to use the package.
 
-Il file `main.tex` fornisce un esempio di utilizzo del package.
+### Setting up the content of the title page
 
-### Impostare i contenuti del frontespizio
+To set the various fields required in the cover page, use the following commands:
+- `\STTitle{title}` to set the thesis title.
+  To insert a line break within the title, use `\protect\newline`.
+  The command also sets the value of `\title{}`;
+- `\STFaculty{faculty}` to set the faculty.
+  Only specify the faculty, e.g., "Philosophy, Literature, Humanistic Studies and Oriental Studies", and not the text *Faculty of*;
+- `\STBCourse{bachelor degree course}` to set the bachelor degree name.
+  Only specify the degree course, e.g., "Ancient History", and not the text *Bachelor's Degree in*;
+- `\STMCourse{master degree course}` to set the master degree name.
+  Only specify the degree course, e.g., "Ancient History", and not the text *Master's Degree in*;
+- `\STChair{chair}` (optional) to set the chair;
+- `\STCandidate{student name}` to set the name of the student.
+  The command also sets the value of `\author{}`;
+- `\STMatricola{student ID number}` to set the student's ID number;
+- `\STSupervisor{supervisor name}` to set the name of the supervisor or instructor;
+- `\STCoSupervisor{co-supervisor name}` (optional) to set the name of the co-supervisor;
+- `\STAcademicYear{academic year/academic year}` to set the academic year.
+  Only specify the year, e.g., "2022/2023", and not the text *academic year*.
 
-Per impostare i vari campi previsti nel frontespizio usare i seguenti comandi:
-- `\FSSTitolo{[titolo]}` per impostare il titolo della tesi.
-  Per inserire un a capo all'interno del titolo si pu&ograve; usare `\protect\newline`
-  Il comando imposta anche il valore di `\title{}`;
-- `\FSSFacolta{[facolta]}` per impostare la facolt&agrave;.
-  Specificare solo la facolt&agrave;, es. "Filosofia, Lettere, Scienze Umanistiche e Studi Orientali", e non il testo *Facolt&agrave; di*;
-- `\FSSCorso{[corso di studi]}` per impostare il corso di laurea.
-  Specificare solo il corso di laurea, es. "Storia antica", e non il testo *Corso di laurea in*;
-- `\FSSCattedra{[cattedra]}` (opzionale) per impostare la cattedra;
-- `\FSSCandidato{[nome tesista]}` per impostare il nome del/la candidato/a.
-  Il comando imposta anche il valore di `\author{}`;
-- `\FSSMatricola{[matricola]}` per impostare il numero di matricola del/a candidato/a;
-- `\FSSRelatore{[nome relatore]}` per impostare il nome del relatore o del supervisore;
-- `\FSSCorrelatore{[nome correlatore]}` (opzionale) per impostare il nome del correlatore;
-- `\FSSAnnoAccademico{[anno]/[anno]}` per impostare l'anno accademico.
-  Specificare solo l'anno, ad es. "2015/2016", e non il testo *A/A*.
+**Only one between STBCourse and STMCourse must be specified**.
 
-*Cattedra* e *Correlatore* possono non essere specificati, nel qual caso non compariranno nel frontespizio.
-Ogni altro campo deve essere specificato.
+*Chair* and *Co-supervisor* may not be specified, in which case they will not appear on the title page. Every other field must be specified.
 
-#### Nota su relatore e correlatore
+#### Note on supervisor and co-supervisor
 
-Per laureandi triennali il relatore potrebbe essere chiamato "responsabile", il correlatore "co-responsabile".
-Per modificare il testo indicativo di relatore e correlatore, usare i comandi `\FSSTestoRelatore{[testo]}` e `\FSSTestoCorrelatore{[testo]}`.
-Entrambi i campi sono inizialmente impostati come *Relatore* e *Correlatore*.
+For bachelor's degree graduates, the supervisor may be referred to as "responsible", and the co-supervisor as "co-responsible".
+To modify the wording indicative of supervisor and co-supervisor, use the commands `\STTextSupervisor{text}` and `\STTextCoSupervisor{text}`.
+Both fields are initially set as *Supervisor* and *Co-supervisor*.
 
-### Stile del frontespizio
+### Title page style
 
-Il titolo viene formattato secondo le specifiche fornite dalla Sapienza:
-- titolo, facolt&agrave; e corso di laurea in colore `RGB(111,10,25)`;
-- font arial;
-- 20pt per titolo, 10pt per il resto;
-- grassetto per facolt&agrave; e corso di laurea.
+The title is formatted according to the specifications provided by Sapienza:
+- title, faculty, and degree course in color `RGB(111,10,25)`;
+- Arial font;
+- 20pt for the title, 10pt for the rest;
+- bold for the faculty and degree course.
 
-Il testo &egrave; allineato a sinistra, sulla *S* del logo Sapienza.
-Le impostazioni specificate non influiscono sul resto del documento.
+The text is left-aligned, on the *S* of the Sapienza logo.
+The specified settings do not affect the rest of the document.
 
-I margini sono impostati (sx,sup,dx,inf) a 4cm, 2.75cm, 2.5cm, 1cm.
-Non influiscono sui margini nel resto del documento.
+The margins are set (left, top, right, bottom) to 4cm, 2.75cm, 2.5cm, 1cm.
+They do not affect the margins in the rest of the document.
 
-### Impostare gli spazi
+### Setting spaces
 
-I campi vengono stampati nel seguente ordine:
+The fields are printed in the following order:
 
-1. Titolo tesi;
-2. Facolt&agrave;, corso di laurea, e opzionalmente cattedra;
-3. Candidato e matricola;
-4. Relatore e opzionalmente correlatore (quest'ultimo spostato verso destra);
-5. Anno accademico.
+1. Thesis title;
+2. Faculty, (bachelor or master) degree course, and optionally chair;
+3. Candidate and matriculation number;
+4. Supervisor and optionally co-supervisor (the latter moved to the right);
+5. Academic year.
 
-&Egrave; possibile regolare lo spazio verticale fra i diversi campi:
-- `\FSSapienzaSpazioTitolo` imposta lo spazio fra logo Sapienza e titolo;
-- `\FSSapienzaSpazioFacolta` imposta lo spazio fra titolo e facolt&agrave;
-- `\FSSapienzaSpazioCandidato` imposta lo spazio fra facolt&agrave; e candidato;
-- `\FSSapienzaSpazioRelatore` imposta lo spazio fra candidato e relatore;
-- `\FSSapienzaSpazioAnnoAccademico` imposta lo spazio fra relatore e anno accademico.
+It is possible to adjust the vertical space between the different fields:
+- `\STSapienzaTitleSpace` sets the space between the Sapienza logo and the title;
+- `\STSapienzaFacultySpace` sets the space between the title and the faculty;
+- `\STSapienzaCandidateSpace` sets the space between the faculty and the candidate;
+- `\STSapienzaSupervisorSpace` sets the space between the candidate and the supervisor;
+- `\STSapienzaAcademicYearSpace` sets the space between the supervisor and the academic year.
 
-Lo spazio fra i campi viene impostato con `\setlength{[nome spazio]}{[valore]}`.
+The space between the fields is set with `\setlength{space name}{value}`.
 
+---------
+
+This is a fork of [asmeikal/FrontespizioSapienza](https://github.com/asmeikal/FrontespizioSapienza) to support English language.
