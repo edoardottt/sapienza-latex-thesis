@@ -1,0 +1,236 @@
+% ============================================== %
+% Author: edoardottt <edoardoottavianelli.it>
+%
+% Original code taken from FronteSpizioSapienza by Michele Laurenti <asmeikal@me.com>
+%
+% Simple package for thesis title pages compliant
+% to the Sapienza's requirements.
+% Reference taken from La Sapienza's website.
+%
+% Package is provided as-is.
+% ============================================== %
+
+\ProvidesPackage{SapienzaThesis}[2016/12/01]
+
+\RequirePackage[a4paper]{geometry}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{color}
+\RequirePackage{anyfontsize}
+\RequirePackage{ifthen}
+\RequirePackage{tabularx}
+\RequirePackage{graphicx}
+
+% Sapienza's color
+\definecolor{SapienzaTColorRed}{RGB}{111,10,25}
+
+% set sans serif font to arial
+\renewcommand{\sfdefault}{phv}
+
+% declare default lengths
+\newlength{\SapienzaTTitleSpace}
+\newlength{\SapienzaTFacultySpace}
+\newlength{\SapienzaTCandidateSpace}
+\newlength{\SapienzaTSupervisorSpace}
+\newlength{\SapienzaTAcademicYearSpace}
+\newlength{\SapienzaTTabularLength}
+% set default lengths
+\setlength{\SapienzaTTitleSpace}{6.15cm}
+\setlength{\SapienzaTFacultySpace}{7cm}
+\setlength{\SapienzaTCandidateSpace}{1cm}
+\setlength{\SapienzaTSupervisorSpace}{1cm}
+\setlength{\SapienzaTAcademicYearSpace}{.5cm}
+
+% length for Supervisor/co-Supervisor table
+\setlength{\SapienzaTTabularLength}{0.9\textwidth}
+
+\makeatletter
+
+% commands to get info from the user
+\newcommand{\STTitle}[1]{\def\@ST@Title{#1}\title{#1}}
+\newcommand{\STFaculty}[1]{\def\@ST@Faculty{#1}}
+\newcommand{\STBCourse}[1]{\def\@ST@BCourse{#1}}
+\newcommand{\STMCourse}[1]{\def\@ST@MCourse{#1}}
+\newcommand{\STChair}[1]{\def\@ST@Chair{#1}}
+\newcommand{\STCandidate}[1]{\def\@ST@Candidate{#1}\author{#1}}
+\newcommand{\STMatricola}[1]{\def\@ST@Matricola{#1}}
+\newcommand{\STSupervisor}[1]{\def\@ST@Supervisor{#1}}
+\newcommand{\STCoSupervisor}[1]{\def\@ST@CoSupervisor{#1}}
+\newcommand{\STAcademicYear}[1]{\def\@ST@AcademicYear{#1}}
+
+% commands to set text for Supervisor/CoSupervisor
+\newcommand{\STTextSupervisor}[1]{\def\@ST@Text@Supervisor{#1}}
+\newcommand{\STTextCoSupervisor}[1]{\def\@ST@Text@CoSupervisor{#1}}
+
+% empty defaults
+\def\@ST@Chair{}
+\def\@ST@MCourse{}
+\def\@ST@CoSupervisor{}
+
+% text default for Supervisor/CoSupervisor
+\def\@ST@Text@Supervisor{Supervisor}
+\def\@ST@Text@CoSupervisor{CoSupervisor}
+
+% print info commands
+\def\SapienzaTPrintTitle{\@ST@Title}
+\def\SapienzaTPrintFaculty{\@ST@Faculty}
+\def\SapienzaTPrintBCourse{\@ST@BCourse}
+\def\SapienzaTPrintMCourse{\@ST@MCourse}
+\def\SapienzaTPrintChair{\@ST@Chair}
+\def\SapienzaTPrintCandidate{\@ST@Candidate}
+\def\SapienzaTPrintMatricola{\@ST@Matricola}
+\def\SapienzaTPrintSupervisor{\@ST@Supervisor}
+\def\SapienzaTPrintCoSupervisor{\@ST@CoSupervisor}
+\def\SapienzaTPrintAcademicYear{\@ST@AcademicYear}
+
+\def\SapienzaTPrintTextSupervisor{\@ST@Text@Supervisor}
+\def\SapienzaTPrintTextCoSupervisor{\@ST@Text@CoSupervisor}
+
+% check if info available
+\def\skipChair{\equal{\@ST@Chair}{}}
+\def\skipMCourse{\equal{\@ST@MCourse}{}}
+\def\skipCoSupervisor{\equal{\@ST@CoSupervisor}{}}
+
+\makeatother
+
+\newcommand{\SapienzaTMakeLogo}{%
+	\hspace*{-2cm}% -2cm horizontal skip to align logo with text
+	\includegraphics[width=4cm]{./logo-sapienza.eps}%
+	\par%
+}
+
+\newcommand{\SapienzaTMakeTitle}{%
+	\vspace{\SapienzaTTitleSpace}%
+	{%
+		\fontsize{20pt}{24pt}\selectfont%
+		\noindent%
+		\sffamily%
+		\color{SapienzaTColorRed}%
+		\SapienzaTPrintTitle%
+		\par%
+	}%
+}
+
+\newcommand{\SapienzaTMakeFacultyCourseChair}{%
+	\vspace{\SapienzaTFacultySpace}%
+	% faculty
+	{%
+		\fontsize{10pt}{12pt}\selectfont%
+		\noindent%
+		\sffamily%
+		\bfseries%
+		\color{SapienzaTColorRed}%
+		Faculty of \SapienzaTPrintFaculty%
+		\par%
+	}%
+	% Degree course
+	\ifthenelse{\skipMCourse}{%
+		{%
+				\fontsize{10pt}{12pt}\selectfont%
+				\noindent%
+				\sffamily%
+				\bfseries%
+				\color{SapienzaTColorRed}%
+				Bachelor's Degree in \SapienzaTPrintBCourse%
+				\par%
+		}%
+	}%
+	{%
+		{%
+			\fontsize{10pt}{12pt}\selectfont%
+			\noindent%
+			\sffamily%
+			\bfseries%
+			\color{SapienzaTColorRed}%
+			Master's Degree in \SapienzaTPrintMCourse%
+			\par%
+		}%
+	}%
+	% chair (optional)
+	\ifthenelse{\skipChair}{}{%
+		{%
+			\fontsize{10pt}{12pt}\selectfont%
+			\noindent%
+			\sffamily%
+			Chair of \SapienzaTPrintChair%
+			\par%
+		}%
+	}%
+}
+
+\newcommand{\SapienzaTMakeCandidate}{%
+	\vspace{\SapienzaTCandidateSpace}%
+	{%
+		\fontsize{10pt}{12pt}\selectfont%
+		\noindent%
+		\sffamily%
+		\SapienzaTPrintCandidate%
+		\protect\newline%
+		\SapienzaTPrintMatricola%
+		\par%
+	}%
+}
+
+\newcommand{\SapienzaTMakeSupervisorCoSupervisor}{%
+	\vspace{\SapienzaTSupervisorSpace}%
+	\noindent%
+	\ifthenelse{\skipCoSupervisor}{%
+	{%
+		\fontsize{10pt}{12pt}\selectfont%
+		\sffamily%
+		\SapienzaTPrintTextSupervisor%
+		\protect\newline%
+		\sffamily%
+		\SapienzaTPrintSupervisor%
+	}%
+	}{%
+	    \begin{tabularx}{\SapienzaTTabularLength}{@{}Xl}%
+			\fontsize{10pt}{12pt}\selectfont%
+			\sffamily%
+			\SapienzaTPrintTextSupervisor%
+			&%
+			\fontsize{10pt}{12pt}\selectfont%
+			\sffamily%
+			\SapienzaTPrintTextCoSupervisor \\%
+			\fontsize{10pt}{12pt}\selectfont%
+			\sffamily%
+			\SapienzaTPrintSupervisor%
+			&%
+			\fontsize{10pt}{12pt}\selectfont%
+			\sffamily%
+			\SapienzaTPrintCoSupervisor \\%
+		\end{tabularx}%
+	}%
+	\par%
+}
+
+\newcommand{\SapienzaTMakeAcademicYear}{%
+	\vspace{\SapienzaTAcademicYearSpace}%
+	{%
+		\fontsize{10pt}{12pt}\selectfont%
+		\noindent%
+		\sffamily%
+		Academic Year \SapienzaTPrintAcademicYear%
+		\par%
+	}%
+}
+
+\renewcommand{\maketitle}{%
+	% margins as suggested by Sapienza
+	\newgeometry{left=4cm,top=2.75cm,right=2.5cm,bottom=1cm}%
+	% no page number
+	\thispagestyle{empty}%
+	% Sapienza's logo
+	\SapienzaTMakeLogo%
+	% title
+	\SapienzaTMakeTitle%
+	% faculty, degree and (optionally) course
+	\SapienzaTMakeFacultyCourseChair%
+	% candidate and matricola
+	\SapienzaTMakeCandidate%
+	% Supervisor and (optionally) co-Supervisor
+	\SapienzaTMakeSupervisorCoSupervisor%
+	% academic year
+	\SapienzaTMakeAcademicYear%
+	% restore document geometry
+	\restoregeometry%
+}
