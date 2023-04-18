@@ -1,5 +1,5 @@
 <h3 align=center>
-This is a fork of <a href="https://github.com/asmeikal/FrontespizioSapienza">asmeikal/FrontespizioSapienza</a> to support english language.
+This is a fork of <a href="https://github.com/asmeikal/FrontespizioSapienza">asmeikal/FrontespizioSapienza</a> to support english language
 </h3>
 
 ------
