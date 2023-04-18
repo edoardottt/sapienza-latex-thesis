@@ -29,7 +29,8 @@ To set the various fields required in the cover page, use the following commands
 - `\STAcademicYear{academic year/academic year}` to set the academic year.
   Only specify the year, e.g., "2022/2023", and not the text *academic year*.
 
-**Only one between STBCourse and STMCourse must be specified**.
+> **Note**
+> Only one between STBCourse and STMCourse must be specified.
 
 *Chair* and *Co-supervisor* may not be specified, in which case they will not appear on the title page. Every other field must be specified.
 
