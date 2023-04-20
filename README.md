@@ -22,9 +22,9 @@ To set the various fields required in the cover page, use the following commands
   The command also sets the value of `\title{}`;
 - `\STFaculty{faculty}` to set the faculty.
   Only specify the faculty, e.g., "Philosophy, Literature, Humanistic Studies and Oriental Studies", and not the text *Faculty of*;
-- `\STBCourse{bachelor degree course}` to set the bachelor degree name.
+- `\STBCourse{bachelor's degree course}` to set the bachelor's degree name.
   Only specify the degree course, e.g., "Ancient History", and not the text *Bachelor's Degree in*;
-- `\STMCourse{master degree course}` to set the master degree name.
+- `\STMCourse{master's degree course}` to set the master's degree name.
   Only specify the degree course, e.g., "Ancient History", and not the text *Master's Degree in*;
 - `\STChair{chair}` (optional) to set the chair;
 - `\STCandidate{student name}` to set the name of the student.
