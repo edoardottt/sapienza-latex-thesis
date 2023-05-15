@@ -81,4 +81,6 @@ The space between the fields is set with `\setlength{space name}{value}`.
 
 ---------
 
+If you want to propose a change, just open an [issue](https://github.com/edoardottt/sapienza-latex-thesis/issues) or a [PR](https://github.com/edoardottt/sapienza-latex-thesis/pulls).
+
 [edoardoottavianelli.it](https://www.edoardoottavianelli.it) to contact me.
