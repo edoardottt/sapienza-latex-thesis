@@ -17,6 +17,7 @@ The `test.tex` file provides an example of how to use the package.
 ### Setting up the content of the title page
 
 To set the various fields required in the cover page, use the following commands:
+
 - `\STTitle{title}` to set the thesis title.
   To insert a line break within the title, use `\protect\newline`.
   The command also sets the value of `\title{}`;
@@ -49,6 +50,7 @@ Both fields are initially set as *Supervisor* and *Co-supervisor*.
 ### Title page style
 
 The title is formatted according to the specifications provided by Sapienza:
+
 - title, faculty, and degree course in color `RGB(111,10,25)`;
 - Arial font;
 - 20pt for the title, 10pt for the rest;
@@ -71,6 +73,7 @@ The fields are printed in the following order:
 5. Academic year.
 
 It is possible to adjust the vertical space between the different fields:
+
 - `\STSapienzaTitleSpace` sets the space between the Sapienza logo and the title;
 - `\STSapienzaFacultySpace` sets the space between the title and the faculty;
 - `\STSapienzaCandidateSpace` sets the space between the faculty and the candidate;
