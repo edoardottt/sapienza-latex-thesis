@@ -88,4 +88,4 @@ If you want to propose a change, just open an [issue](https://github.com/edoardo
 
 Take my [master's degree thesis](https://github.com/edoardottt/master-degree-thesis) as example.
 
-[edoardoottavianelli.it](https://www.edoardoottavianelli.it) to contact me.
+[edoardottt.com](https://edoardottt.com/) to contact me.
